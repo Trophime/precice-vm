@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -ex
 
+# Make sure to be in home directory
+cd ~
+
 # Get SU2 6.0.0 from GitHub
 wget --quiet https://github.com/su2code/SU2/archive/v6.0.0.tar.gz
 tar -xzf v6.0.0.tar.gz

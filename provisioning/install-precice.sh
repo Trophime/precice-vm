@@ -38,14 +38,17 @@ cp -r /usr/share/precice/examples/ ./precice-examples
 
 if [ ! -d "tutorials/" ]; then
     git clone --depth=1 --branch master https://github.com/precice/tutorials.git
-    ln -sf ~/tutorials ~/Desktop/
+    mkdir -p ~/Desktop/
+    ln -sf $PWD/tutorials ~/Desktop/
 fi
 (
-    cd tutorials/elastic-tube-1d/fluid-cpp/ && mkdir build && cd build && cmake .. && make && cd ../..
-    cd solid-cpp/ && mkdir build && cd build && cmake .. && make
+    cd tutorials/elastic-tube-1d/fluid-cpp/ && mkdir -p build && cd build && cmake .. && make && cd ../..
+    cd solid-cpp/ && mkdir -p build && cd build && cmake .. && make && make && cd ../..
+    cd ../..
+
 )
 (
-    cd tutorials/quickstart/solid-cpp/ && cmake . && make
+    cd tutorials/quickstart/solid-cpp/ && cmake . && make && make && cd ../../..
 )
 (
     cd tutorials/heat-exchanger && ./download-meshes.sh
@@ -56,7 +59,7 @@ sudo apt-get -y install gnuplot # needed for watchpoint scripts of tutorials
 ### OPTIONAL - preCICE Python bindings and Python example
 # Get PIP and the preCICE Python bindings
 sudo apt-get install -y python3-pip
-pip3 install --upgrade pip
+sudo pip3 install --upgrade pip
 pip3 install --user pyprecice
 
 # Additional python packages
@@ -64,7 +67,7 @@ pip3 install --user pandas # Needed for the post-processing script of the oscill
 
 # Temporary workaround for https://github.com/precice/vm/issues/61
 # Remove as soon as https://github.com/precice/tutorials/issues/217 gets resolved
-sudo apt-get install -y python3.8-venv
+sudo apt-get install -y python3-venv
 (
     cd tutorials/perpendicular-flap/fluid-nutils/
     python3 -m venv nutils6-env
@@ -80,5 +83,5 @@ if [ ! -d "python-bindings/" ]; then
     git clone --depth=1 --branch master https://github.com/precice/python-bindings.git
 fi
 cp -r python-bindings/examples/solverdummy/ precice-examples/solverdummies/python/
-rm -r python-bindings
+rm -rf python-bindings
 ###

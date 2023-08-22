@@ -38,4 +38,4 @@ fi
 # # (see Vagrantfile and post-install.sh, rebuild and update for OpenFOAM version other than v2206)
 
 # Build the tutorials partitioned-heat-conduction solver
-cd ~/tutorials/partitioned-heat-conduction/openfoam-solver && openfoam2206 wmake
+cd $PWD/tutorials/partitioned-heat-conduction/openfoam-solver && openfoam2206 wmake

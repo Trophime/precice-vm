@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -ex
 
+cd 
+
 # Install the C++ vtk library
 sudo apt-get -y install libvtk7-dev
 sudo apt-get -y install libmetis-dev

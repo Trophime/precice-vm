@@ -2,6 +2,7 @@
 set -ex
 
 # Make a folder to collect all DUNE-related code (-p to allow re-provisioning)
+cd ~
 mkdir -p dune && cd dune
 
 # Get required DUNE modules

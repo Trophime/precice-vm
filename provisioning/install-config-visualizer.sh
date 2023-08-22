@@ -2,7 +2,8 @@
 set -ex
 
 # Get the config-visualizer from GitHub
-if [ ! -d "config-visualizer/" ]; then
+if [ ! -d "${HOME}/config-visualizer/" ]; then
+    cd ${HOME}
     git clone --depth=1 --branch master https://github.com/precice/config-visualizer.git
 fi
 pip3 install --user -e config-visualizer
